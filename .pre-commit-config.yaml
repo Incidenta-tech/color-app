@@ -1,0 +1,76 @@
+exclude: "^docs/|/migrations/"
+default_stages: [commit]
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: debug-statements
+
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.9.0
+    hooks:
+      - id: pyupgrade
+        args: [--py311-plus]
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        # args: ["--profile", "black"]
+
+  - repo: https://github.com/psf/black
+    rev: 23.7.0
+    hooks:
+      - id: black
+        exclude: ^.*\b(migrations)\b.*$
+
+  -   repo: https://github.com/PyCQA/autoflake
+      rev: v2.2.0
+      hooks:
+      -   id: autoflake
+
+#   - repo: https://github.com/PyCQA/flake8
+#     rev: 5.0.4
+#     hooks:
+#       - id: flake8
+#         args: ["--config=setup.cfg"]
+#         additional_dependencies: [flake8-isort]
+
+  - repo:  https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.23.3
+    hooks:
+      - id: check-github-workflows
+      - id: check-dependabot
+
+  - repo: https://github.com/pre-commit/pygrep-hooks
+    rev: v1.10.0
+    hooks:
+      - id: python-use-type-annotations
+      - id: python-check-blanket-noqa
+      # - id: python-no-eval
+
+  # -   repo: https://github.com/Yelp/detect-secrets
+  #     rev: v1.4.0
+  #     hooks:
+  #     -   id: detect-secrets
+  #         args: ['--baseline', '.secrets.baseline']
+  #         exclude: package.lock.json
+
+  # run pip-audit from custom action
+  # because default is not support poetry
+  # - repo: https://github.com/koyeung/ko-poetry-audit-plugin.git
+  #   rev: 0.7.0
+  #   hooks:
+  #     - id: poetry-audit
+
+  # - repo: https://github.com/Lucas-C/pre-commit-hooks-safety
+  #   rev: v1.3.0
+  #   hooks:
+  #   -   id: python-safety-dependencies-check
+  #       files: pyproject.toml
