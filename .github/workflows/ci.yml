@@ -1,6 +1,6 @@
 # from https://github.com/marketplace/actions/install-poetry-action
 
-name: build and deploy to server
+name: build image
 
 env:
   DOCKER_BUILDKIT: 1
