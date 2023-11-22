@@ -9,7 +9,7 @@ env:
 on:
   push:
     branches: [ "master", "main" ]
-    paths-ignore: [ "docs/**", "README.md", "Makefile"]
+    paths-ignore: [ "docs/**", "README.md", "Makefile", ".gitignore", ".pre-commit-config.yaml"]
   workflow_dispatch:
 
 concurrency:
