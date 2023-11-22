@@ -34,10 +34,8 @@ jobs:
       - name: Docker meta
         uses: docker/metadata-action@v4
         id: meta
-        env:
-          REPO_NAME: ${{ github.event.repository.name }}
         with:
-          images: axsapronov/${REPO_NAME}
+          images: axsapronov/${{ github.event.repository.name }}
           tags: |
             type=ref,event=branch
             type=ref,event=pr
