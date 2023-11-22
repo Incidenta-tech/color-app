@@ -33,7 +33,7 @@ jobs:
         uses: docker/metadata-action@v5
         id: meta
         with:
-          images: "axsapronov/${{ github.event.repository.name }}"
+          images: "asapronov/${{ github.event.repository.name }}"
           tags: |
             type=ref,event=branch
             type=ref,event=pr
