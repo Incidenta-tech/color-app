@@ -4,18 +4,23 @@ import socket
 import random
 import os
 import argparse
+from prometheus_flask_exporter import PrometheusMetrics
 
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
+
+# static information as metric
+metrics.info('app_info', 'Application info', version='1.0.3')
 
 # Combination of background and text color
 color_codes = {
-      "red": ("#e74c3c", "#e4e4e4"),
+    "red": ("#e74c3c", "#e4e4e4"),
     "green": ("#16a085", "#e4e4e4"),
-     "blue": ("#2980b9", "#e4e4e4"),
+    "blue": ("#2980b9", "#e4e4e4"),
     "blue2": ("#30336b", "#e4e4e4"),
-     "pink": ("#be2edd", "#e4e4e4"),
- "darkblue": ("#130f40", "#e4e4e4"),
-   "yellow": ("#fff380", "#097054")
+    "pink": ("#be2edd", "#e4e4e4"),
+    "darkblue": ("#130f40", "#e4e4e4"),
+    "yellow": ("#fff380", "#097054")
 }
 
 SUPPORTED_COLORS = ",".join(color_codes.keys())
@@ -26,7 +31,6 @@ COLOR = random.choice(list(color_codes.keys()))
 
 @app.route("/")
 def main():
-    # return 'Hello'
     return render_template('hello.html', name=socket.gethostname(), color=color_codes[COLOR])
 
 
