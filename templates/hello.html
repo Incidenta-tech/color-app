@@ -1,6 +1,27 @@
 <!doctype html>
-<title>Hello from Flask</title>
-<body style="background: {{ color[0] }};"></body>
+<html>
+<title>Color App</title>
+<head>
+  <style>
+      html, body {
+        height: 100%;
+      }
+
+      html {
+        display: table;
+        margin: auto;
+      }
+
+      body {
+        display: table-cell;
+        vertical-align: middle;
+        background-color: {{ color[0] }};
+      }
+
+    </style>
+</head>
+<body>
+
 <div style="color: {{ color[1] }};
     text-align:  center;
     height: 90px;
@@ -18,3 +39,5 @@
   {% endif %}
 
 </div>
+</body>
+</html>
