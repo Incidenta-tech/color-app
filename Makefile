@@ -22,3 +22,6 @@ check:
 update: pip-tools
 	poetry up
 	pre-commit autoupdate
+
+release:
+	bump-my-version bump patch --config-file .bumpversion.cfg
