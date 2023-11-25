@@ -24,4 +24,4 @@ update: pip-tools
 	pre-commit autoupdate
 
 release:
-	bump-my-version bump patch --config-file .bumpversion.cfg
+	bump-my-version bump patch --config-file ./.bumpversion.cfg
