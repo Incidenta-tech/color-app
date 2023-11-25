@@ -1,7 +1,4 @@
-import argparse
-import os
 import random
-import socket
 
 from flask import Flask, render_template
 from prometheus_flask_exporter import PrometheusMetrics
@@ -12,70 +9,55 @@ metrics = PrometheusMetrics(app)
 # TODO - get version from poetry
 metrics.info("app_info", "Application info", version="1.0.0")
 
-# Combination of background and text color
-color_codes = {
-    "red": ("#e74c3c", "#e4e4e4"),
-    "green": ("#16a085", "#e4e4e4"),
-    "blue": ("#2980b9", "#e4e4e4"),
-    "blue2": ("#30336b", "#e4e4e4"),
-    "pink": ("#be2edd", "#e4e4e4"),
-    "darkblue": ("#130f40", "#e4e4e4"),
-    "yellow": ("#fff380", "#097054"),
-}
+COLOR_PAIRS = [
+    # background-color, text-color
+    ("#54478C", "#FFFFFF"),
+    ("#2C699A", "#FFFFFF"),
+    ("#048BA8", "#000000"),
+    ("#0DB39E", "#000000"),
+    ("#16DB93", "#000000"),
+    ("#83E377", "#000000"),
+    ("#B9E769", "#000000"),
+    ("#EFEA5A", "#000000"),
+    ("#F1C453", "#000000"),
+    ("#F29E4C", "#000000"),
+    ("#FF595E", "#000000"),
+    ("#FFCA3A", "#000000"),
+    ("#8AC926", "#000000"),
+    ("#1982C4", "#000000"),
+]
 
-SUPPORTED_COLORS = ",".join(color_codes.keys())
-# Get color from Environment variable
-COLOR_FROM_ENV = os.environ.get("APP_COLOR")
-# Generate a random color
-COLOR = random.choice(list(color_codes.keys()))
+PHARSES = [
+    "Все, что существует, существует в какой-то мере",
+    "Не всё то истина, что существует",
+    "Существует столько истин, сколько есть точек зрения",
+    "Истина всегда где-то рядом",
+    "Бытие предшествует сущности",
+    "Бытие предшествует мышлению",
+    "Познание есть сомнение",
+    "Всё знать нельзя",
+    "Не существует одной истины",
+    "Главное - не то, как они нас побеждают, а то, как мы им проигрываем",
+    "Кто свинья, тот не медведь",
+    "Память - хорошая штука, если не имеешь дело с прошлым",
+    "Надо улучшать то, что есть, а не ухудшать, чего нет",
+    "Какие львы, такие совы",
+    "Шорты - как брюки. Только короче",
+    "Лучше голова коня, чем таблица умножения",
+    "Нельзя положить то, что уже положено",
+    "Настоящее - это прошлое в будущем",
+    "Чтобы себя сдерживать, нужно сначала себя не сдерживать",
+]
 
 
 @app.route("/")
 def main():
     return render_template(
-        "hello.html",
-        name=socket.gethostname(),
-        color=color_codes[COLOR],
+        "content.html",
+        phrase=random.choice(PHARSES),
+        color=random.choice(COLOR_PAIRS),
     )
 
 
 if __name__ == "__main__":
-    print(
-        " This is a sample web application that displays a colored background. \n"
-        " A color can be specified in two ways. \n"
-        "\n"
-        " 1. As a command line argument with --color as the argument. Accepts one of " + SUPPORTED_COLORS + " \n"
-        " 2. As an Environment variable APP_COLOR. Accepts one of " + SUPPORTED_COLORS + " \n"
-        " 3. If none of the above then a random color is picked from the above list. \n"
-        " Note: Command line argument precedes over environment variable.\n"
-        "\n"
-        ""
-    )
-
-    # Check for Command Line Parameters for color
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--color", required=False)
-    args = parser.parse_args()
-
-    if args.color:
-        print("Color from command line argument =" + args.color)
-        COLOR = args.color
-        if COLOR_FROM_ENV:
-            print(
-                "A color was set through environment variable -"
-                + COLOR_FROM_ENV
-                + ". However, color from command line argument takes precendence."
-            )
-    elif COLOR_FROM_ENV:
-        print("No Command line argument. Color from environment variable =" + COLOR_FROM_ENV)
-        COLOR = COLOR_FROM_ENV
-    else:
-        print("No command line argument or environment variable. Picking a Random Color =" + COLOR)
-
-    # Check if input color is a supported one
-    if COLOR not in color_codes:
-        print("Color not supported. Received '" + COLOR + "' expected one of " + SUPPORTED_COLORS)
-        exit(1)
-
-    # Run Flask Application
     app.run(host="0.0.0.0", port=8080)
