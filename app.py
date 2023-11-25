@@ -7,7 +7,7 @@ app = Flask(__name__)
 metrics = PrometheusMetrics(app)
 
 # TODO - get version from poetry
-metrics.info("app_info", "Application info", version="1.0.0")
+metrics.info("app_info", "Application info", version="0.1.0")
 
 COLOR_PAIRS = [
     # background-color, text-color
