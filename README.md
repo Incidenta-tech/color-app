@@ -1,4 +1,4 @@
-# Webapp Color
+# color-app
 
 ## Description
 
