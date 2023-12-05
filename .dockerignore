@@ -1,8 +1,8 @@
-*.md
 **/Dockerfile*
-.git*
+*.md
 .dockerignore
 .editorconfig
+.git*
 .gitattributes
 .github
 .gitignore

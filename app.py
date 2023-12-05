@@ -2,7 +2,8 @@ import os
 import random
 
 from dotenv import load_dotenv
-from flask import Flask, render_template
+from flask import Flask
+from flask import render_template
 from prometheus_flask_exporter import PrometheusMetrics
 
 load_dotenv()
