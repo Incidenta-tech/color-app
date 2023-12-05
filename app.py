@@ -1,7 +1,11 @@
+import os
 import random
 
+from dotenv import load_dotenv
 from flask import Flask, render_template
 from prometheus_flask_exporter import PrometheusMetrics
+
+load_dotenv()
 
 app = Flask(__name__)
 metrics = PrometheusMetrics(app)
@@ -57,6 +61,16 @@ def main():
         phrase=random.choice(PHARSES),
         color=random.choice(COLOR_PAIRS),
     )
+
+
+@app.route("/ping")
+def ping():
+    return "pong"
+
+
+@app.route("/env")
+def env():
+    return f"ENV_VARIABLE = {os.environ['ENV_VARIABLE']}"
 
 
 if __name__ == "__main__":
