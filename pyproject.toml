@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "color-app"
-version = "1.0.6"
+version = "1.0.7"
 description = ""
 authors = ["axsapronov <a@sapronov.me>"]
 readme = "README.md"
@@ -40,7 +40,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.bumpversion]
-current_version = "1.0.6"
+current_version = "1.0.7"
 commit = true
 commit_args = "--no-verify"
 tag = true
