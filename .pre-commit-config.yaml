@@ -81,18 +81,18 @@ repos:
     args: [--py311-plus]
 
 - repo: https://github.com/Lucas-C/pre-commit-hooks
-  rev: v1.5.4
+  rev: v1.5.5
   hooks:
   - id: remove-tabs
     exclude: ^docs/(make.bat|Makefile)|tests/unit/example/.*$
 
 - repo: https://github.com/PyCQA/autoflake
-  rev: v2.2.1
+  rev: v2.3.1
   hooks:
   - id: autoflake
 
 - repo: https://github.com/psf/black
-  rev: 23.11.0
+  rev: 24.3.0
   hooks:
   - id: black
     args: [--skip-string-normalization, --target-version, py37, --line-length, '120']
@@ -100,7 +100,7 @@ repos:
     language_version: python3
 
 - repo: https://github.com/psf/black-pre-commit-mirror
-  rev: 23.11.0
+  rev: 24.3.0
   hooks:
   - id: black
     language_version: python3
@@ -115,7 +115,7 @@ repos:
 #######################################
 
 - repo: https://github.com/asottile/pyupgrade
-  rev: v3.15.0
+  rev: v3.15.2
   hooks:
   - id: pyupgrade
     args: [--py311-plus, --keep-runtime-typing]

@@ -7,20 +7,21 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-flask = "^3.0.0"
+flask = "^3.0.2"
 prometheus-flask-exporter = "^0.23.0"
-uwsgi = "^2.0.23"
-python-dotenv = "^1.0.0"
-sentry-sdk = "^1.36.0"
+uwsgi = "^2.0.24"
+python-dotenv = "^1.0.1"
+sentry-sdk = "^1.44.1"
 
 [tool.poetry.group.dev.dependencies]
-flake8 = ">=6.1.0"
-flake8-isort = ">=6.0.0"
-coverage = ">=7.2.7"
-black = ">=23.7.0"
-pre-commit = ">=3.3.3"
-autoflake = ">=2.2.0"
+flake8 = ">=7.0.0"
+flake8-isort = ">=6.1.1"
+coverage = ">=7.4.4"
+black = ">=24.3.0"
+pre-commit = ">=3.7.0"
+autoflake = ">=2.3.1"
 bump-my-version = "^0.12.0"
+poetry-plugin-up = "^0.7.1"
 
 [tool.black]
 line-length = 119
