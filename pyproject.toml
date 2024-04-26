@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "phrase-app"
-version = "1.0.11"
+version = "1.0.12"
 description = ""
 authors = ["axsapronov <a@sapronov.me>"]
 readme = "README.md"
@@ -41,7 +41,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.bumpversion]
-current_version = "1.0.11"
+current_version = "1.0.12"
 commit = true
 commit_args = "--no-verify"
 tag = true
