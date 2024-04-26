@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "prase-app"
+name = "phrase-app"
 version = "1.0.11"
 description = ""
 authors = ["axsapronov <a@sapronov.me>"]

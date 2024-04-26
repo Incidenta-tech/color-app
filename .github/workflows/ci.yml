@@ -81,7 +81,7 @@ jobs:
             await github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
               repo: 'practice-templates',
-              workflow_id: 'prase-app-image.yml',
+              workflow_id: 'phrase-app-image.yml',
               ref: 'main',
               inputs: {
                 'ref': '${{ github.ref }}',

@@ -1,4 +1,4 @@
-# prase-app
+# phrase-app
 
 ## Description
 
