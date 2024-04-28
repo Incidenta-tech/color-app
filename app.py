@@ -59,6 +59,7 @@ def main():
     return render_template(
         "content.html",
         phrase=random.choice(PHARSES),
+        project_name="Phrase app",
         color=random.choice(COLOR_PAIRS),
     )
 
